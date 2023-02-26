@@ -17,7 +17,6 @@ let letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let score = 0;
 
 function findCommonChars(string1, string2, string3) {
-
     for (let i = 0; i < string1.length; i++) {
         if (string2.includes(string1[i]) && string3.includes(string1[i])) {
             score += (letters.indexOf(string1[i]) + 1)
