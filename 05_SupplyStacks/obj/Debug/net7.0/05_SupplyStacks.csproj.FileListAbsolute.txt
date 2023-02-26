@@ -1,0 +1,15 @@
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.csproj.AssemblyReference.cache
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.GeneratedMSBuildEditorConfig.editorconfig
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.AssemblyInfoInputs.cache
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.AssemblyInfo.cs
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.csproj.CoreCompileInputs.cache
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\bin\Debug\net7.0\05_SupplyStacks.exe
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\bin\Debug\net7.0\05_SupplyStacks.deps.json
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\bin\Debug\net7.0\05_SupplyStacks.runtimeconfig.json
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\bin\Debug\net7.0\05_SupplyStacks.dll
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\bin\Debug\net7.0\05_SupplyStacks.pdb
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.dll
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\refint\05_SupplyStacks.dll
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.pdb
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\05_SupplyStacks.genruntimeconfig.cache
+G:\E Drive\Software_Dev\advent_of_code\05_SupplyStacks\obj\Debug\net7.0\ref\05_SupplyStacks.dll
