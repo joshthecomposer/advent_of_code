@@ -1,5 +1,6 @@
 let fs = require('fs');
-let input = fs.readFileSync('input.txt').toString('utf-8').split('\r\n');
+let path = require("path");
+let input = fs.readFileSync(path.resolve(__dirname, 'input.txt')).toString('utf-8').split('\r\n');
 
 let letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
