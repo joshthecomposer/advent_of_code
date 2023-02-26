@@ -1,6 +1,7 @@
 ﻿//Part 01:
 
 int score = 0;
+int score2 = 0;
 
 foreach (string l in System.IO.File.ReadAllLines("input.txt"))
 {
@@ -14,9 +15,11 @@ foreach (string l in System.IO.File.ReadAllLines("input.txt"))
     {
         score++;
     }
+    if (arr[0] <= arr[3] && arr[2] <= arr[1]|| arr[3] <= arr[0] && arr[1] <= arr[2])
+    {
+        score2++;
+    }
 }
 
 Console.WriteLine(score);
-
-//Part 02:
-
+Console.WriteLine(score2);
