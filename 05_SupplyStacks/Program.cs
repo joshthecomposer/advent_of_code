@@ -39,10 +39,16 @@ for (int i = Array.IndexOf(lines, lines[divider + 1]); i < lines.Count(); i++)
 
 void TheGreatCrane(int moves, int from, int to)
 {
+    List<char> temp = new List<char>();
     for (int i = 0; i < moves; i++)
     {
-        // stacks[to-1].Push(stacks[from-1].Pop());
+       temp.Insert(0,stacks[from-1].Pop());
     }
+    foreach (char c in temp)
+    {
+        stacks[to - 1].Push(c);
+    }
+    
 }
 
 foreach(List<int> w in workOrder)
