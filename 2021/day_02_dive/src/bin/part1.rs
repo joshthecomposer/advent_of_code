@@ -17,19 +17,17 @@ fn part1(input: &str) -> usize {
     let lines_vec: Vec<&str> = input.lines().collect();
     for line in lines_vec.iter() {
         let split_line: Vec<&str> = line.split(" ").collect();
-        if split_line[0].starts_with("f")  {
-            let h = position.get_mut("h").unwrap().clone();
-            position.insert("h", h + split_line[1].parse::<usize>().unwrap());
-        } else if split_line[0].starts_with("u") {
-            let d = position.get_mut("d").unwrap().clone();
-            position.insert("d", d - split_line[1].parse::<usize>().unwrap());
-        } else {
-            let d = position.get_mut("d").unwrap().clone();
-            position.insert("d", d + split_line[1].parse::<usize>().unwrap());
+        let command = split_line[0];
+        let value = split_line[1].parse::<usize>().unwrap();
+
+        match command {
+            "forward"=> *position.get_mut("h").unwrap() += value,
+            "up"=> *position.get_mut("d").unwrap() -= value,
+            "down"=> *position.get_mut("d").unwrap() += value,
+            _=> panic!("Invalid command detected"),
         }
     }
-    let result = position.get("h").unwrap() * position.get("d").unwrap();
-    result
+    position["h"] * position["d"]
 }
 
 #[cfg(test)]
