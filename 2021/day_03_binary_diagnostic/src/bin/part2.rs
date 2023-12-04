@@ -1,4 +1,4 @@
-use std::time::Instant;
+use std::{collections::HashMap, time::Instant};
 
 fn main() {
     let input = include_str!("./input.txt");
@@ -9,29 +9,31 @@ fn main() {
     println!("Executed in: {:?}", duration);
 }
 
-fn part1(input: &str) -> i32 {
-    let lines_vec: Vec<&str> = input.lines().collect();
-    let mut result = 0;
-    let mut prev = 0;
-    let mut first_iter = true;
-    for i in 0..lines_vec.len() {
-        if i + 2 > lines_vec.len() - 1 {
-            break;
-        }
-        let temp = lines_vec[i].parse::<usize>().unwrap()
-            + lines_vec[i + 1].parse::<usize>().unwrap()
-            + lines_vec[i + 2].parse::<usize>().unwrap();
-        if first_iter {
-            first_iter = false;
-            continue;
-        }
-        if temp > prev {
+fn part1(input: &str) -> usize {
+    let mut lines_vec: Vec<String> = input.lines().map(|l| l.to_string()).collect();
+    let mut lines_by_beginning: HashMap<&str, Vec<String>> =
+        HashMap::from([("1", vec![]), ("0", vec![])]);
+        let mut cursor = 0;
+    while lines_vec.len() > 1 && cursor < lines_vec[0].len() {
+        for line in lines_vec.iter() {
+            match &line[cursor..cursor + 1] {
+                "1" => lines_by_beginning.get_mut("1").unwrap().push(line.clone()),
+                "0" => lines_by_beginning.get_mut("0").unwrap().push(line.clone()),
+                _ => panic!("Something went wronk"),
+            };
 
-            result += 1;
+           
         }
-        prev = temp;
+        if lines_by_beginning.get("0").unwrap().len() >= lines_by_beginning.get("1").unwrap().len()
+        {
+            lines_vec = lines_by_beginning.get("0").unwrap().to_vec();
+        } else {
+            lines_vec = lines_by_beginning.get("1").unwrap().to_vec();
+        }
+        cursor += 1;
     }
-    result
+    dbg!(lines_by_beginning);
+    0
 }
 
 #[cfg(test)]
@@ -40,17 +42,19 @@ mod tests {
     #[test]
     fn it_works() {
         let result = part1(
-            "199
-200
-208
-210
-200
-207
-240
-269
-260
-263",
+            "00100
+11110
+10110
+10111
+10101
+01111
+00111
+11100
+10000
+11001
+00010
+01010",
         );
-        assert_eq!(result, 5);
+        assert_eq!(result, 230);
     }
 }
