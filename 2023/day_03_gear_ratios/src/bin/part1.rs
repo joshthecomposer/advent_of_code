@@ -1,5 +1,4 @@
-use std::{time::Instant, fs::File};
-use std::io::Write;
+use std::time::Instant;
 
 fn main() {
     let input = include_str!("./input.txt");
@@ -97,7 +96,7 @@ fn part1(input: &str) -> usize {
                     let lower_left_diag = lines_vec[down_one].chars().nth(left_one).unwrap();
 
                     if !lower_left_diag.is_numeric() && lower_left_diag != '.' {
-                        dbg!(lower_left_diag);
+                        // dbg!(lower_left_diag);
                         found_a_part = true;
                     }
                 }
