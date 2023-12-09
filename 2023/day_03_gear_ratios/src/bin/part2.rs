@@ -68,11 +68,12 @@ fn part1(input: &str) -> usize {
                     let left_char = line.chars().nth(x - 1).unwrap();
                     let right_char = line.chars().nth(x + 1).unwrap();
 
-
                     if left_char == GEAR {
+                        found_a_gear = true;
                         positions_to_add.insert((x-1, y));
                     }
                     if right_char == GEAR {
+                        found_a_gear = true;
                         positions_to_add.insert((x+1, y));
                     }
                 } else if x > 0 && x == line.len() - 1 {
