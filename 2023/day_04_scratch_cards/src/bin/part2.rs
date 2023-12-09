@@ -11,48 +11,43 @@ fn main() {
 
 fn part1(input: &str) -> usize {
     let lines_vec = input.lines().collect::<Vec<&str>>();
-    /*
-    hash map:
-    {
-        Card 1: [[41,48,83,86,17], [83, 86,  6, 31, 17,  9, 48, 53]]
-    }
-    there is white space in some of the numbers so that they line up... figure out how to trim this off when processing.
-     */
-    let mut hash_map: HashMap<&str, Vec<Vec<usize>>> = HashMap::new();
-    //Parse input into the hashmap above.
+    let mut hash_map: HashMap<usize, Vec<Vec<usize>>> = HashMap::new();
+
     for line in lines_vec.iter() {
-        let split1 = line.split(":").collect::<Vec<&str>>();
-        let key = split1[0];
-        let value = split1[1]
+        let split = line.split(":").collect::<Vec<&str>>();
+        let key = split[0].split_whitespace().last().unwrap().parse::<usize>().unwrap();
+        let value = split[1]
             .split("|")
-            .map(|s1| {
-                s1.split_whitespace()
-                    .map(|s2| s2.trim().parse::<usize>().unwrap())
-                    .collect::<Vec<usize>>()
-            })
-            .collect::<Vec<Vec<usize>>>();
+            .map(|s| s.split_whitespace().map(|n| n.parse::<usize>().unwrap()).collect())
+            .collect();
         hash_map.insert(key, value);
     }
 
-    let mut result: usize = 0;
+    let mut card_copies: HashMap<usize, usize> = (1..=hash_map.len()).map(|n| (n, 1)).collect();
+    let last_card_number = *hash_map.keys().max().unwrap();
 
-    for (key, _) in &hash_map {
-        let mut current_counter = 0;
-        for winning in &hash_map[key][0] {
-            for pick in &hash_map[key][1] {
-                if winning == pick {
-                    if current_counter < 1 {
-                        current_counter += 1;
-                    } else {
-                        current_counter *= 2;
-                    }
-                }
-            }
+    for card_number in 1..=last_card_number {
+        //This is a much better way to store the card data to then iterate over, rather than doing it all at once.
+        let card_data = &hash_map[&card_number];
+        let winning_numbers = &card_data[0];
+        let picked_numbers = &card_data[1];
+
+        let matches = winning_numbers.iter().filter(|&&n| picked_numbers.contains(&n)).count();
+
+        let mut counts_to_add: Vec<(usize, usize)> = Vec::new();
+        for next_card in card_number+1..=std::cmp::min(card_number+matches, last_card_number) {
+            let count = card_copies.get(&card_number).unwrap_or(&0);
+            counts_to_add.push((next_card, *count));
         }
-        result += current_counter;
+
+        for (card, count) in counts_to_add {
+            *card_copies.entry(card).or_insert(0) += count;
+        }
     }
-    result
+
+    card_copies.values().sum()
 }
+
 
 #[cfg(test)]
 mod tests {
@@ -67,6 +62,6 @@ Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
 Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11",
         );
-        assert_eq!(30, result);
+        assert_eq!(result, 30);
     }
 }
