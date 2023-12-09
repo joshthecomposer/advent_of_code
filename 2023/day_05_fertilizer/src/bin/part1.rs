@@ -9,7 +9,13 @@ fn main() {
     println!("Executed in: {:?}", duration);
 }
 
-fn part1(_input: &str) -> usize {
+fn part1(input: &str) -> usize {
+    let data = input.split_once("\n\n").unwrap();
+    let seeds = &data.0.split(":").collect::<Vec<&str>>()[1].split_whitespace().map(|s| s.parse::<usize>().unwrap()).collect::<Vec<usize>>();
+    let blocks:Vec<&str> = data.1.split("\n\n").collect();
+    dbg!(data);
+    dbg!(seeds);
+    dbg!(blocks);
     0
 }
 
