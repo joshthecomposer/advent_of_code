@@ -1,4 +1,4 @@
-use std::{collections::HashMap, time::Instant};
+use std::time::Instant;
 
 fn main() {
     let input = include_str!("./input.txt");
