@@ -10,26 +10,13 @@ fn main() {
     println!("Executed in: {:?}", duration);
 }
 
-fn find_solution(input: &str) -> i32 {
-    let re = Regex::new(r"(mul)\(\d+,\d+\)").unwrap();
-    let re2 = Regex::new(r"\d+,\d+").unwrap();
-    let mut result = 0;
+fn find_solution(input: &str) -> u32 {
+    let re = Regex::new(r"(mul)\((?<lhs>\d+),(?<rhs>\d+)\)").unwrap();
 
-    let matches: Vec<&str> = re.find_iter(input)
-        .map(|m| m.as_str())
-        .collect();
-    
-    for m in matches {
-        let nums: Vec<i32> = re2.find(m)
-            .unwrap()
-            .as_str()
-            .split(",")
-            .filter_map(|n| n.parse().ok())
-            .collect();
-
-        result += nums[0] * nums[1];
-    }
-    result
+    let sum = re.captures_iter(input)
+        .map(|c| c["lhs"].parse::<u32>().unwrap() * c["rhs"].parse::<u32>().unwrap() )
+        .sum();
+    sum
 }
 
 #[cfg(test)]
