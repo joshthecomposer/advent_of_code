@@ -1,1 +1,0 @@
-/Users/joshuawise/dev/rust/advent_of_spaghetti_code/2024/day_01_historian_hysteria/target/debug/part1: /Users/joshuawise/dev/rust/advent_of_spaghetti_code/2024/day_01_historian_hysteria/src/bin/input.txt /Users/joshuawise/dev/rust/advent_of_spaghetti_code/2024/day_01_historian_hysteria/src/bin/part1.rs
